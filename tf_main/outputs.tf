@@ -12,3 +12,8 @@ output "ec2_private_ip" {
   description = "Private IP of the EC2 instance"
   value       = module.ec2.private_ip
 }
+
+output "volume_id" {
+  description = "ID of the EBS"
+  value       = module.ebs.volume_id
+}
