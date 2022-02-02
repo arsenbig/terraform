@@ -4,21 +4,21 @@ variable "ec2_type" {
 }
 
 variable "ami" {
- default = ""
+  default = ""
 }
 
 variable "az" {
- default = "us-east-2b"
+  default = "us-east-2b"
 }
 
 variable "use_custom_ami" {
-  type = bool
+  type    = bool
   default = false
 }
 
 variable "volume_name" {
- type = string
- default = "/dev/sdh"
+  type    = string
+  default = "/dev/sdh"
 }
 
 
