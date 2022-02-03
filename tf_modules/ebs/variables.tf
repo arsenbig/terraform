@@ -65,5 +65,5 @@ variable "ebs" {
 variable "prevent_destroy" {
   description = "Deletion protection of the EBS volume"
   type        = bool
-  default     = null
+  default     = false
 }
