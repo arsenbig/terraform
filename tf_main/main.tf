@@ -3,9 +3,9 @@ provider "aws" {
 }
 
 module "ec2" {
-  source = "../tf_modules/ec2"
+  source            = "../tf_modules/ec2"
   availability_zone = "us-east-1b"
-  ami = "ami-0a8b4cd432b1c3063"
+  ami               = "ami-0a8b4cd432b1c3063"
   volumes = {
     "volume1" = {
       volume_id   = module.ebs-1.id
@@ -24,7 +24,8 @@ module "ebs-1" {
   size              = 2
   ebs               = "this_volume1"
   tags              = { Org = "Any", Env = "Test" }
-  # prevent_destroy         = false
+  prevent_destroy   = false
+
 }
 
 module "ebs-2" {
@@ -33,5 +34,6 @@ module "ebs-2" {
   size              = 2
   ebs               = "this_volume2"
   tags              = { Org = "Any", Env = "Test" }
-  # prevent_destroy         = false
+  prevent_destroy   = true
+
 }

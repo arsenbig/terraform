@@ -1,9 +1,4 @@
 output "id" {
   description = "ID of the volume"
-  value       = aws_ebs_volume.this.id
-}
-
-output "arn" {
-  description = "ARN of the volume"
-  value       = aws_ebs_volume.this.arn
+  value       = compact([one(aws_ebs_volume.this_protected[*].id), one(aws_ebs_volume.this_unprotected[*].id)])[0]
 }
