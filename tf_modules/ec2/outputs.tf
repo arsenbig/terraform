@@ -1,18 +1,29 @@
 output "id" {
-  description = "ID of the EC2 instance"
-  value       = aws_instance.my_ec2.id
+  description = "The ID of the instance"
+  value       = aws_instance.this.id
 }
 
-output "public_ip" {
-  description = "Public IP address of the EC2 instance"
-  value       = aws_instance.my_ec2.public_ip
+output "arn" {
+  description = "The ARN of the instance"
+  value       = aws_instance.this.arn
+}
+
+output "primary_network_interface_id" {
+  description = "The ID of the instance's primary network interface"
+  value       = aws_instance.this.primary_network_interface_id
+}
+
+output "private_dns" {
+  description = "The private DNS name assigned to the instance. Can only be used inside the Amazon EC2, and only available if you've enabled DNS hostnames for your VPC"
+  value       = aws_instance.this.private_dns
 }
 
 output "private_ip" {
-  description = "Private IP address of the EC2 instance"
-  value       = aws_instance.my_ec2.private_ip
+  description = "The private IP address assigned to the instance."
+  value       = aws_instance.this.private_ip
 }
 
-output "latest_amazon_linux_ami" {
-  value = data.aws_ami.amazon_linux.id
+output "tags_all" {
+  description = "A map of tags assigned to the resource, including those inherited from the provider default_tags configuration block"
+  value       = aws_instance.this.tags_all
 }

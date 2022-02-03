@@ -1,4 +1,4 @@
-output "volume_id" {
+output "id" {
   description = "ID of the volume"
-  value       = aws_ebs_volume.my_ebs.id
+  value       = compact([one(aws_ebs_volume.this_protected[*].id), one(aws_ebs_volume.this_unprotected[*].id)])[0]
 }
