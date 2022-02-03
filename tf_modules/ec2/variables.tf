@@ -155,17 +155,16 @@ variable "user_data_base64" {
   default     = null
 }
 
-variable "volume_name" {
-  type    = string
-  default = "/dev/sdh"
-}
-
-variable "ebs_volume_id" {
-  default = ""
-}
-
 variable "cpu_credits" {
   description = "The credit option for CPU usage (unlimited or standard)"
   type        = string
   default     = null
+}
+
+variable "volumes" {
+  description = "Map of the volumes to attach to the instance"
+  type = map(object({
+    volume_id   = string
+    device_name = string
+  }))
 }

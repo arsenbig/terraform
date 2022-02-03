@@ -74,15 +74,8 @@ resource "aws_instance" "this" {
 
 
 resource "aws_volume_attachment" "this" {
-  for_each    = var.volumes 
-  device_name = each.value.volume_name
-  volume_id   = each.value.ebs_volume_id
+  for_each    = var.volumes
+  device_name = each.value.device_name
+  volume_id   = each.value.volume_id
   instance_id = aws_instance.this.id
-}
-
-volumes = {
-    "name" = {
-      volume_id = "ebs/arn"
-      device_name = "devname"
-  }
 }
