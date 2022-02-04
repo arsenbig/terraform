@@ -2,6 +2,25 @@ provider "aws" {
   region = var.region
 }
 
+module "ebs-1" {
+  source            = "../tf_modules/ebs"
+  availability_zone = "us-east-1b"
+  size              = 2
+  ebs               = "this_volume1"
+  tags              = { Org = "Any", Env = "Test" }
+
+}
+
+module "ebs-2" {
+  source            = "../tf_modules/ebs"
+  availability_zone = "us-east-1b"
+  size              = 2
+  ebs               = "this_volume2"
+  tags              = { Org = "Any", Env = "Test" }
+  prevent_destroy   = true
+
+}
+
 module "ec2" {
   source            = "../tf_modules/ec2"
   availability_zone = "us-east-1b"
@@ -16,24 +35,4 @@ module "ec2" {
       device_name = "/dev/sdg"
     }
   }
-}
-
-module "ebs-1" {
-  source            = "../tf_modules/ebs"
-  availability_zone = "us-east-1b"
-  size              = 2
-  ebs               = "this_volume1"
-  tags              = { Org = "Any", Env = "Test" }
-  prevent_destroy   = false
-
-}
-
-module "ebs-2" {
-  source            = "../tf_modules/ebs"
-  availability_zone = "us-east-1b"
-  size              = 2
-  ebs               = "this_volume2"
-  tags              = { Org = "Any", Env = "Test" }
-  prevent_destroy   = true
-
 }
